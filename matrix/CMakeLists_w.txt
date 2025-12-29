@@ -1,0 +1,13 @@
+cmake_minimum_required(VERSION 3.10)
+project(MatrixMultiplication)
+
+set(CMAKE_CXX_STANDARD 17)
+
+add_library(common STATIC common/matrix.cpp)
+
+add_library(thread_lib STATIC thread/thread_impl.cpp)
+add_library(winapi_lib STATIC winapi/winapi_impl.cpp)
+add_library(pthread_lib STATIC pthread/pthread_impl.cpp)
+
+add_executable(matrix_multiplication main.cpp)
+target_link_libraries(matrix_multiplication common thread_lib winapi_lib pthread_lib)
